@@ -33,8 +33,11 @@ streamlit.write('The user entered ', fruit_choice)
 
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
-my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
-my_data_row = my_cur.fetchone()
+# my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
+mycur.execute("select * from pc_rivery_db.public.fruit_load_list")
+# my_data_row = my_cur.fetchone()
+mydata_row = my_cur.fetchall()
+
 streamlit.text("Hello from Snowflake:")
 streamlit.text(my_data_row)
 
